@@ -1,168 +1,152 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.6">
-  <style type="text/css">
-    body {background-color: #f1f1f7}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErgoSpace | Sklep Meblowy AR</title>
+    <!-- Подключаем библиотеку WebXR -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --text: #0f172a;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        /* Верхняя панель (Логотип) */
+        header {
+            background: white;
+            padding: 20px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        /* Основной контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        /* Левая колонка: Текст и маркетинг */
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        .text-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .text-section p {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .features {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .features li::before {
+            content: '✨ ';
+        }
+        /* Правая колонка: 3D виджет */
+        .viewer-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        model-viewer {
+            width: 100%;
+            height: 500px;
+            background-color: #f1f5f9;
+            border-radius: 12px;
+        }
+        /* Яркая и отдельная кнопка AR */
+        .ar-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: 0.3s;
+            width: 80%;
+            max-width: 300px;
+        }
+        .ar-button:hover {
+            background-color: #1d4ed8;
+            transform: translateX(-50%) scale(1.05);
+        }
+    </style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;!DOCTYPE html&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;html lang="pl"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;head&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;title&gt;ErgoSpace | Sklep Meblowy AR&lt;/title&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;!-- Подключаем библиотеку WebXR --&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"&gt;&lt;/script&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;style&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>:root {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>--primary: #2563eb;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>--bg: #f8fafc;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>--text: #0f172a;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>body {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: var(--bg);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>color: var(--text);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>/* Верхняя панель (Логотип) */</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>header {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background: white;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 20px 5%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>box-shadow: 0 2px 10px rgba(0,0,0,0.05);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>display: flex;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>justify-content: space-between;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>align-items: center;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.logo {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-size: 24px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-weight: bold;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>color: var(--primary);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>/* Основной контейнер */</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.container {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>max-width: 1200px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>margin: 40px auto;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 0 20px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>display: flex;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>flex-wrap: wrap;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>gap: 40px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>align-items: center;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>/* Левая колонка: Текст и маркетинг */</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.text-section {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>flex: 1;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>min-width: 300px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.text-section h1 {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-size: 2.5rem;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>margin-bottom: 10px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.text-section p {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-size: 1.1rem;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>color: #475569;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>line-height: 1.6;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.features {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>margin-top: 20px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>list-style: none;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 0;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.features li {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>margin-bottom: 10px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-weight: 500;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.features li::before {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>content: '✨ ';</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>/* Правая колонка: 3D виджет */</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.viewer-section {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>flex: 1;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>min-width: 300px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background: white;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 20px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 20px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0,0,0,0.08);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>position: relative;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>model-viewer {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>width: 100%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>height: 500px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: #f1f5f9;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 12px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>/* Яркая и отдельная кнопка AR */</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.ar-button {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: var(--primary);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>color: white;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>border: none;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>border-radius: 30px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>padding: 15px 30px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-size: 16px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>font-weight: bold;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>position: absolute;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>bottom: 30px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>left: 50%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>transform: translateX(-50%);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>cursor: pointer;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>transition: 0.3s;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>width: 80%;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>max-width: 300px;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>.ar-button:hover {</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>background-color: #1d4ed8;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>transform: translateX(-50%) scale(1.05);</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>}</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/style&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;/head&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;body&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;header&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="logo"&gt;ErgoSpace AR&lt;/div&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;nav&gt;Promocja E-commerce&lt;/nav&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/header&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;!-- Маркетинговый блок (E-commerce) --&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="text-section"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;h1&gt;Fotel biurowy "Ergo-Plus"&lt;/h1&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;p&gt;Odkryj przyszłość zakupów meblowych. Zanim kupisz, sprawdź jak fotel prezentuje się w Twoim wnętrzu dzięki technologii WebXR! Nasz produkt rozwiązuje problem nietrafionych wymiarów.&lt;/p&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;ul class="features"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;li&gt;Ergonomiczne wsparcie dla pleców&lt;/li&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;li&gt;Nowoczesny, minimalistyczny design&lt;/li&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;li&gt;Przymierz w swoim pokoju przed zakupem&lt;/li&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/ul&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/div&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;!-- 3D блок (Inżynieria immersyjna) --&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;div class="viewer-section"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;model-viewer<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>src="../assets/3d_models/chair.glb"<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>alt="Model 3D fotela biurowego"</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>auto-rotate<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>camera-controls<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>ar<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>ar-modes="webxr scene-viewer quick-look"<span class="Apple-converted-space"> </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>shadow-intensity="1"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b><span class="Apple-converted-space">                </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;!-- Кастомная кнопка AR --&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;button slot="ar-button" class="ar-button"&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                    </span>👀 Zobacz w swoim pokoju (AR)</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">                </span>&lt;/button&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b><span class="Apple-converted-space">                </span></b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">            </span>&lt;/model-viewer&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">        </span>&lt;/div&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/div&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626; min-height: 28.0px"><span class="s1"><b></b></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;/body&gt;</b></span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #262626"><span class="s1"><b>&lt;/html&gt;</b></span></h1>
+
+    <header>
+        <div class="logo">ErgoSpace AR</div>
+        <nav>Promocja E-commerce</nav>
+    </header>
+
+    <div class="container">
+        <!-- Маркетинговый блок (E-commerce) -->
+        <div class="text-section">
+            <h1>Fotel biurowy "Ergo-Plus"</h1>
+            <p>Odkryj przyszłość zakupów meblowych. Zanim kupisz, sprawdź jak fotel prezentuje się w Twoim wnętrzu dzięki technologii WebXR! Nasz produkt rozwiązuje problem nietrafionych wymiarów.</p>
+            <ul class="features">
+                <li>Ergonomiczne wsparcie dla pleców</li>
+                <li>Nowoczesny, minimalistyczny design</li>
+                <li>Przymierz w swoim pokoju przed zakupem</li>
+            </ul>
+        </div>
+
+        <!-- 3D блок (Inżynieria immersyjna) -->
+        <div class="viewer-section">
+            <model-viewer 
+                src="../assets/3d_models/chair.glb" 
+                alt="Model 3D fotela biurowego"
+                auto-rotate 
+                camera-controls 
+                ar 
+                ar-modes="webxr scene-viewer quick-look" 
+                shadow-intensity="1">
+                
+                <!-- Кастомная кнопка AR -->
+                <button slot="ar-button" class="ar-button">
+                    👀 Zobacz w swoim pokoju (AR)
+                </button>
+                
+            </model-viewer>
+        </div>
+    </div>
+
 </body>
 </html>

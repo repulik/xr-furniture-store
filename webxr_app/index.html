@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Мебель - Примерочная</title>
+    <!-- Подключаем библиотеку WebXR от Google -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        .product-container {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        /* Настройки для нашего 3D-окна */
+        model-viewer {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #eee;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Магазин Эргономичной Мебели</h1>
+        <p>Посмотри, как кресло впишется в твою комнату!</p>
+    </header>
+
+    <div class="product-container">
+        <h2>Офисное кресло "Эрго-Плюс"</h2>
+        
+        <!-- Сам виджет WebXR -->
+        <!-- Обрати внимание на путь к файлу src: он ведет в твою папку assets -->
+        <model-viewer 
+            src="../assets/3d_models/chair.glb" 
+            alt="3D модель офисного кресла"
+            auto-rotate 
+            camera-controls 
+            ar 
+            ar-modes="webxr scene-viewer quick-look" 
+            shadow-intensity="1">
+        </model-viewer>
+
+        <p>Крути модель мышкой. <br> Если зайти с телефона, появится кнопка "Посмотреть в AR"!</p>
+    </div>
+
+</body>
+</html>

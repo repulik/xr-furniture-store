@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ErgoSpace | Sklep Meblowy AR</title>
-    <!-- Подключаем библиотеку WebXR -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
     <style>
         :root {
@@ -18,7 +17,6 @@
             background-color: var(--bg);
             color: var(--text);
         }
-        /* Верхняя панель (Логотип) */
         header {
             background: white;
             padding: 20px 5%;
@@ -32,7 +30,6 @@
             font-weight: bold;
             color: var(--primary);
         }
-        /* Основной контейнер */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -42,7 +39,6 @@
             gap: 40px;
             align-items: center;
         }
-        /* Левая колонка: Текст и маркетинг */
         .text-section {
             flex: 1;
             min-width: 300px;
@@ -56,19 +52,27 @@
             color: #475569;
             line-height: 1.6;
         }
-        .features {
+        /* Стили для кнопок каталога */
+        .catalog-buttons {
+            display: flex;
+            gap: 10px;
             margin-top: 20px;
-            list-style: none;
-            padding: 0;
+            margin-bottom: 20px;
         }
-        .features li {
-            margin-bottom: 10px;
-            font-weight: 500;
+        .catalog-btn {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .features li::before {
-            content: '✨ ';
+        .catalog-btn:hover, .catalog-btn.active {
+            background-color: var(--primary);
+            color: white;
         }
-        /* Правая колонка: 3D виджет */
         .viewer-section {
             flex: 1;
             min-width: 300px;
@@ -84,7 +88,6 @@
             background-color: #f1f5f9;
             border-radius: 12px;
         }
-        /* Яркая и отдельная кнопка AR */
         .ar-button {
             background-color: var(--primary);
             color: white;
@@ -99,13 +102,8 @@
             transform: translateX(-50%);
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            transition: 0.3s;
             width: 80%;
             max-width: 300px;
-        }
-        .ar-button:hover {
-            background-color: #1d4ed8;
-            transform: translateX(-50%) scale(1.05);
         }
     </style>
 </head>
@@ -117,36 +115,51 @@
     </header>
 
     <div class="container">
-        <!-- Маркетинговый блок (E-commerce) -->
         <div class="text-section">
-            <h1>Fotel biurowy "Ergo-Plus"</h1>
-            <p>Odkryj przyszłość zakupów meblowych. Zanim kupisz, sprawdź jak fotel prezentuje się w Twoim wnętrzu dzięki technologii WebXR! Nasz produkt rozwiązuje problem nietrafionych wymiarów.</p>
-            <ul class="features">
-                <li>Ergonomiczne wsparcie dla pleców</li>
-                <li>Nowoczesny, minimalistyczny design</li>
-                <li>Przymierz w swoim pokoju przed zakupem</li>
-            </ul>
+            <h1 id="product-title">Fotel biurowy "Ergo-Plus"</h1>
+            <p id="product-desc">Ergonomiczne wsparcie dla pleców i nowoczesny design. Przymierz w swoim pokoju przed zakupem!</p>
+            
+            <!-- Кнопки каталога -->
+            <h3>Wybierz produkt:</h3>
+            <div class="catalog-buttons">
+                <!-- Если твой второй файл называется иначе, поменяй 'table.glb' на свое название -->
+                <button class="catalog-btn active" onclick="changeProduct('chair.glb', 'Fotel biurowy Ergo-Plus', 'Ergonomiczne wsparcie dla pleców i nowoczesny design. Przymierz w swoim pokoju przed zakupem!', this)">Fotel</button>
+                <button class="catalog-btn" onclick="changeProduct('table.glb', 'Stół drewniany Loft', 'Minimalistyczny stół idealny do nowoczesnych wnętrz. Sprawdź, czy zmieści się w Twojej kuchni!', this)">Stół</button>
+            </div>
         </div>
 
-        <!-- 3D блок (Inżynieria immersyjna) -->
         <div class="viewer-section">
             <model-viewer 
+                id="my-viewer"
                 src="../assets/3d_models/chair.glb" 
-                alt="Model 3D fotela biurowego"
+                alt="Model 3D"
                 auto-rotate 
                 camera-controls 
                 ar 
                 ar-modes="webxr scene-viewer quick-look" 
                 shadow-intensity="1">
                 
-                <!-- Кастомная кнопка AR -->
                 <button slot="ar-button" class="ar-button">
                     👀 Zobacz w swoim pokoju (AR)
                 </button>
-                
             </model-viewer>
         </div>
     </div>
 
+    <!-- JavaScript логика для смены моделей (Динамическое окружение) -->
+    <script>
+        function changeProduct(modelFile, title, desc, btnElement) {
+            // Меняем 3D модель
+            document.getElementById('my-viewer').src = "../assets/3d_models/" + modelFile;
+            // Меняем текст
+            document.getElementById('product-title').innerText = title;
+            document.getElementById('product-desc').innerText = desc;
+            
+            // Визуальное обновление активной кнопки
+            let buttons = document.querySelectorAll('.catalog-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+    </script>
 </body>
 </html>

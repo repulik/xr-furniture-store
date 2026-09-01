@@ -131,8 +131,9 @@
   .btn--ghost:hover{ background:var(--ink); color:var(--stone); }
   .btn--light{ background:var(--stone); color:var(--ink); }
   .btn--light:hover{ background:var(--stone-deep); }
-  .btn--icon{ padding:11px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); }
+  .btn--icon{ display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; padding:0; border-radius:999px; border:1px solid var(--line); background:var(--card); flex-shrink:0; }
   .btn--icon.active{ border-color:var(--oak); color:var(--oak); }
+  .btn--icon.active .icon path{ fill:currentColor; }
 
   section{ padding:96px 0; }
   .eyebrow-free-heading{ max-width:640px; }
@@ -193,16 +194,24 @@
   }
 
   /* ---------- About / problem-solution ---------- */
-  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
-  .about-copy h2{ font-size:clamp(1.9rem,3vw,2.4rem); max-width:16ch; }
-  .about-copy > p.lede{ color:var(--ink-soft); max-width:52ch; }
+  .about-stack{ display:flex; flex-direction:column; gap:44px; }
+  .about-copy h2{ font-size:clamp(1.9rem,3vw,2.4rem); max-width:26ch; }
+  .about-copy > p.lede{ color:var(--ink-soft); max-width:62ch; }
+  .pos-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 48px; margin-top:12px; }
   .pos-block{ padding:26px 0; border-top:1px solid var(--line); }
-  .pos-block:last-of-type{ border-bottom:1px solid var(--line); }
   .pos-block h3{ font-family:'Inter',sans-serif; font-weight:600; font-size:1.05rem; margin-bottom:8px; }
   .pos-block p{ color:var(--ink-soft); margin:0; }
-  .about-photo{ border-radius:var(--radius-l); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); }
-  .about-photo img{ width:100%; height:100%; object-fit:cover; min-height:340px; }
-  @media (max-width:880px){ .about-grid{ grid-template-columns:1fr; } .about-photo{ order:-1; } }
+  .about-photo{
+    border-radius:var(--radius-l); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow);
+    aspect-ratio:2.4/1;
+  }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; object-position:82% center; }
+  @media (max-width:760px){
+    .pos-grid{ grid-template-columns:1fr; }
+    .pos-block:nth-child(2){ border-top:none; padding-top:0; }
+    .about-photo{ aspect-ratio:3/2; }
+    .about-photo img{ object-position:88% center; }
+  }
 
   /* ---------- How AR works ---------- */
   .how-ar{ background:var(--stone-deep); border-radius:var(--radius-l); }
@@ -384,22 +393,24 @@
 
   <!-- ABOUT -->
   <section id="o-nas">
-    <div class="wrap about-grid">
+    <div class="wrap about-stack">
       <div class="about-copy">
         <h2>Meble kupuje się oczami — a w internecie tego brakuje</h2>
         <p class="lede">Jesteśmy zespołem łączącym meblarstwo z inżynierią immersyjną: dobre materiały pokazujemy w technologii, która pozwala je naprawdę ocenić przed zakupem.</p>
 
-        <div class="pos-block">
-          <h3>Problem rynku</h3>
-          <p>Największą barierą przy zakupie mebli online jest niepewność — czy dany fotel lub stół będzie pasował rozmiarem i stylem do konkretnego wnętrza. Zwroty mebli wielkogabarytowych są kosztowne i uciążliwe dla obu stron.</p>
-        </div>
-        <div class="pos-block">
-          <h3>Nasze rozwiązanie</h3>
-          <p>Moduł AR działa bezpośrednio na karcie produktu. Wystarczy smartfon, żeby wirtualnie postawić fotel czy stół we własnym pokoju i ocenić realne proporcje, zanim padnie decyzja o zakupie.</p>
+        <div class="pos-grid">
+          <div class="pos-block">
+            <h3>Problem rynku</h3>
+            <p>Największą barierą przy zakupie mebli online jest niepewność — czy dany fotel lub stół będzie pasował rozmiarem i stylem do konkretnego wnętrza. Zwroty mebli wielkogabarytowych są kosztowne i uciążliwe dla obu stron.</p>
+          </div>
+          <div class="pos-block">
+            <h3>Nasze rozwiązanie</h3>
+            <p>Moduł AR działa bezpośrednio na karcie produktu. Wystarczy smartfon, żeby wirtualnie postawić fotel czy stół we własnym pokoju i ocenić realne proporcje, zanim padnie decyzja o zakupie.</p>
+          </div>
         </div>
       </div>
       <div class="about-photo">
-        <img src="../assets/banner.png" alt="Wnętrze salonu z meblami w stylu, który projektuje ErgoSpace" onerror="this.parentElement.style.display='none'">
+        <img src="../assets/banner.png" alt="Kącik biurowy z fotelem Ergo-Plus i biurkiem przy oknie" onerror="this.parentElement.style.display='none'">
       </div>
     </div>
   </section>
@@ -460,7 +471,10 @@
               interaction-prompt="when-focused"
               shadow-intensity="1"
               exposure="1"
-              camera-orbit="0deg 75deg 105%">
+              camera-target="auto"
+              field-of-view="auto"
+              bounds="tight"
+              camera-orbit="0deg 75deg auto">
               <button slot="ar-button" class="btn btn--primary" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%);">
                 📱 Zobacz w swoim pokoju (AR)
               </button>
@@ -473,9 +487,9 @@
 
           <div class="viewer-controls">
             <div class="control-group" role="group" aria-label="Kąt kamery">
-              <button class="cam-btn active" data-orbit="0deg 75deg 105%">Przód</button>
-              <button class="cam-btn" data-orbit="90deg 75deg 105%">Bok</button>
-              <button class="cam-btn" data-orbit="0deg 8deg 130%">Góra</button>
+              <button class="cam-btn active" data-orbit="0deg 75deg auto">Przód</button>
+              <button class="cam-btn" data-orbit="90deg 75deg auto">Bok</button>
+              <button class="cam-btn" data-orbit="0deg 8deg auto">Góra</button>
             </div>
             <div class="control-group">
               <label for="exposureRange">Światło</label>
@@ -504,7 +518,7 @@
           <div class="product-actions">
             <button class="btn btn--primary" id="quoteBtn" type="button">Zapytaj o wycenę</button>
             <button class="btn--icon" id="favBtn" type="button" aria-pressed="false" title="Dodaj do ulubionych">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C.7 8.7 2.6 5 6.2 5c2 0 3.4 1.1 4.3 2.4C11.4 6.1 12.8 5 14.8 5c3.6 0 5.5 3.7 3.7 7.5C19 16.65 12 21 12 21Z"/></svg>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
             </button>
           </div>
 
@@ -655,7 +669,8 @@
     });
 
     document.querySelectorAll('.cam-btn').forEach(function(btn, i){ btn.classList.toggle('active', i === 0); });
-    catalogViewer.cameraOrbit = '0deg 75deg 105%';
+    catalogViewer.cameraOrbit = '0deg 75deg auto';
+    catalogViewer.jumpCameraToGoal();
   }
 
   tabs.forEach(function(tab){
@@ -675,6 +690,7 @@
   document.querySelectorAll('.cam-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       catalogViewer.cameraOrbit = btn.dataset.orbit;
+      catalogViewer.jumpCameraToGoal();
       document.querySelectorAll('.cam-btn').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
     });
@@ -683,7 +699,7 @@
   // ---------- Exposure slider ----------
   var exposureRange = document.getElementById('exposureRange');
   exposureRange.addEventListener('input', function(){
-    catalogViewer.exposure = exposureRange.value;
+    catalogViewer.exposure = parseFloat(exposureRange.value);
   });
 
   // ---------- Day / evening ambience ----------
@@ -693,8 +709,8 @@
     evening = !evening;
     ambienceToggle.setAttribute('aria-pressed', evening ? 'true' : 'false');
     ambienceToggle.classList.toggle('active', evening);
-    catalogViewer.exposure = evening ? '0.7' : '1';
-    catalogViewer.shadowIntensity = evening ? '2' : '1';
+    catalogViewer.exposure = evening ? 0.7 : 1;
+    catalogViewer.shadowIntensity = evening ? 2 : 1;
     exposureRange.value = evening ? '0.7' : '1';
   });
 

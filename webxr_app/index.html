@@ -8,89 +8,199 @@
     <style>
         :root {
             --primary: #2563eb;
+            --primary-dark: #1d4ed8;
             --bg: #f8fafc;
             --text: #0f172a;
+            --gray: #475569;
         }
+        
+        /* Плавный скролл для всей страницы */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-color: var(--bg);
             color: var(--text);
+            line-height: 1.6;
         }
+
+        /* Шапка (Header) */
         header {
-            background: white;
-            padding: 20px 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top: 0;
+            width: 90%;
+            z-index: 1000;
         }
+        
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--primary);
-            /* Добавили выравнивание, чтобы картинка и текст смотрелись красиво */
             display: flex;
             align-items: center;
         }
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
+
+        .logo img {
+            height: 35px;
+            margin-right: 12px;
+        }
+
+        /* Главный экран (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
             padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Секция о проблеме и решении (About / Pain Points) */
+        .about-section {
+            padding: 100px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border-left: 5px solid var(--primary);
+            text-align: left;
+        }
+
+        /* Секция каталога 3D */
+        .catalog-section {
+            padding: 100px 20px;
+            background: var(--bg);
+        }
+
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
-        .text-section {
+
+        .text-content {
             flex: 1;
             min-width: 300px;
         }
-        .text-section h1 {
+
+        .text-content h2 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        .text-section p {
-            font-size: 1.1rem;
-            color: #475569;
-            line-height: 1.6;
-        }
-        /* Стили для кнопок каталога */
+
+        /* Кнопки переключения мебели */
         .catalog-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
+
         .catalog-btn {
             background-color: white;
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 12px 25px;
+            border-radius: 10px;
             font-weight: bold;
+            font-size: 1rem;
             cursor: pointer;
             transition: 0.3s;
         }
+
         .catalog-btn:hover, .catalog-btn.active {
             background-color: var(--primary);
             color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
-        .viewer-section {
-            flex: 1;
+
+        /* Блок с 3D моделью */
+        .viewer-box {
+            flex: 1.5;
             min-width: 300px;
             background: white;
             padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             position: relative;
         }
+
         model-viewer {
             width: 100%;
-            height: 500px;
-            background-color: #f1f5f9;
-            border-radius: 12px;
+            height: 550px;
+            background-color: #f8fafc;
+            border-radius: 15px;
         }
+
+        /* Кнопка AR для мобильных */
         .ar-button {
             background-color: var(--primary);
             color: white;
@@ -108,62 +218,105 @@
             width: 80%;
             max-width: 300px;
         }
+
+        /* Подвал */
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        /* Адаптация под мобильные устройства */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .about-section h2 { font-size: 2rem; }
+            .catalog-container { flex-direction: column; }
+            model-viewer { height: 400px; }
+            header { padding: 15px; width: 100%; box-sizing: border-box; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Шапка -->
     <header>
         <div class="logo">
-            <!-- Вставили картинку логотипа -->
-            <img src="../assets/logo.png" alt="ErgoSpace Logo" style="height: 40px; border-radius: 8px; margin-right: 10px;" onerror="this.style.display='none'">
-            ErgoSpace AR
+            <img src="../assets/logo.png" alt="Logo" onerror="this.style.display='none'">
+            ErgoSpace
         </div>
-        <nav>Promocja E-commerce</nav>
+        <div style="font-weight: 500; color: var(--gray);">AR Sklep</div>
     </header>
 
-    <div class="container">
-        <div class="text-section">
-            <h1 id="product-title">Fotel biurowy "Ergo-Plus"</h1>
-            <!-- Изменили описание под нашу "боль": соответствие стилю интерьера -->
-            <p id="product-desc">Ergonomiczne wsparcie dla pleców i nowoczesny design. Sprawdź wizualnie, czy ten mebel pasuje do stylu Twojego pokoju przed zakupem!</p>
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>Przyszłość zakupów meblowych w Twoim domu</h1>
+        <p>Nie zgaduj, czy mebel będzie pasował. Przymierz go w swoim pokoju korzystając z technologii Rozszerzonej Rzeczywistości (WebXR) przed podjęciem decyzji.</p>
+        <a href="#katalog" class="btn-primary">Przejdź do katalogu 3D</a>
+    </section>
+
+    <!-- Описание проблемы (Pain points) -->
+    <section class="about-section">
+        <div class="about-container">
+            <h2>Rozwiązujemy Twój główny problem</h2>
+            <p>Znasz to uczucie obawy podczas kupowania mebli w internecie? "Czy ten fotel na pewno będzie pasował do mojego salonu?", "Czy kolor drewna zgra się z moją podłogą?".</p>
+            <p>Zwykłe zdjęcia to za mało. W ErgoSpace wierzymy, że zakupy powinny być wolne od stresu.</p>
             
-            <!-- Кнопки каталога -->
-            <h3>Wybierz produkt:</h3>
-            <div class="catalog-buttons">
-                <!-- Если твой второй файл называется иначе, поменяй 'table.glb' на свое название -->
-                <button class="catalog-btn active" onclick="changeProduct('chair.glb', 'Fotel biurowy Ergo-Plus', 'Ergonomiczne wsparcie dla pleców i nowoczesny design. Sprawdź wizualnie, czy ten mebel pasuje do stylu Twojego pokoju przed zakupem!', this)">Fotel</button>
-                <button class="catalog-btn" onclick="changeProduct('table.glb', 'Stół drewniany Loft', 'Minimalistyczny stół idealny do nowoczesnych wnętrz. Sprawdź, czy idealnie wpisze się w design Twojej kuchni!', this)">Stół</button>
+            <div class="highlight-box">
+                <strong>💡 Nasza Misja:</strong> Dzięki wbudowanemu modułowi <b>Augmented Reality</b> możesz jednym kliknięciem przenieść nasz produkt do swojego pokoju. Sprawdź proporcje, dopasowanie do stylu wnętrza i kupuj z pełnym przekonaniem.
             </div>
         </div>
+    </section>
 
-        <div class="viewer-section">
-            <model-viewer 
-                id="my-viewer"
-                src="../assets/3d_models/chair.glb" 
-                alt="Model 3D"
-                auto-rotate 
-                camera-controls 
-                ar 
-                ar-modes="webxr scene-viewer quick-look" 
-                shadow-intensity="1">
+    <!-- Интерактивный каталог -->
+    <section id="katalog" class="catalog-section">
+        <div class="catalog-container">
+            
+            <div class="text-content">
+                <h2 id="product-title">Fotel biurowy "Ergo-Plus"</h2>
+                <p id="product-desc" style="color: var(--gray); font-size: 1.1rem;">Ergonomiczne wsparcie dla pleców i nowoczesny design. Użyj przycisku poniżej, aby obrócić model lub zobacz go w AR na swoim telefonie!</p>
                 
-                <button slot="ar-button" class="ar-button">
-                    👀 Zobacz w swoim pokoju (AR)
-                </button>
-            </model-viewer>
-        </div>
-    </div>
+                <h3 style="margin-top: 40px;">Wybierz model:</h3>
+                <div class="catalog-buttons">
+                    <button class="catalog-btn active" onclick="changeProduct('chair.glb', 'Fotel biurowy Ergo-Plus', 'Ergonomiczne wsparcie dla pleców i nowoczesny design. Idealny do domowego biura.', this)">🪑 Fotel</button>
+                    <button class="catalog-btn" onclick="changeProduct('table.glb', 'Stół drewniany Loft', 'Minimalistyczny stół do nowoczesnych wnętrz. Sprawdź, jak wpisze się w design Twojej kuchni!', this)">🪵 Stół Loft</button>
+                </div>
+            </div>
 
-    <!-- JavaScript логика для смены моделей (Динамическое окружение) -->
+            <div class="viewer-box">
+                <model-viewer 
+                    id="my-viewer"
+                    src="../assets/3d_models/chair.glb" 
+                    alt="Model 3D"
+                    auto-rotate 
+                    camera-controls 
+                    ar 
+                    ar-modes="webxr scene-viewer quick-look" 
+                    shadow-intensity="1">
+                    
+                    <button slot="ar-button" class="ar-button">
+                        📱 Zobacz w swoim pokoju (AR)
+                    </button>
+                </model-viewer>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <p>&copy; 2024 ErgoSpace AR. Projekt studencki: Technologie E-commerce & Inżynieria Immersyjna.</p>
+    </footer>
+
+    <!-- Логика переключения моделей -->
     <script>
         function changeProduct(modelFile, title, desc, btnElement) {
-            // Меняем 3D модель
             document.getElementById('my-viewer').src = "../assets/3d_models/" + modelFile;
-            // Меняем текст
             document.getElementById('product-title').innerText = title;
             document.getElementById('product-desc').innerText = desc;
             
-            // Визуальное обновление активной кнопки
             let buttons = document.querySelectorAll('.catalog-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');

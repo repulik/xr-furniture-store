@@ -29,6 +29,9 @@
             font-size: 24px;
             font-weight: bold;
             color: var(--primary);
+            /* Добавили выравнивание, чтобы картинка и текст смотрелись красиво */
+            display: flex;
+            align-items: center;
         }
         .container {
             max-width: 1200px;
@@ -110,21 +113,26 @@
 <body>
 
     <header>
-        <div class="logo">ErgoSpace AR</div>
+        <div class="logo">
+            <!-- Вставили картинку логотипа -->
+            <img src="../assets/logo.png" alt="ErgoSpace Logo" style="height: 40px; border-radius: 8px; margin-right: 10px;" onerror="this.style.display='none'">
+            ErgoSpace AR
+        </div>
         <nav>Promocja E-commerce</nav>
     </header>
 
     <div class="container">
         <div class="text-section">
             <h1 id="product-title">Fotel biurowy "Ergo-Plus"</h1>
-            <p id="product-desc">Ergonomiczne wsparcie dla pleców i nowoczesny design. Przymierz w swoim pokoju przed zakupem!</p>
+            <!-- Изменили описание под нашу "боль": соответствие стилю интерьера -->
+            <p id="product-desc">Ergonomiczne wsparcie dla pleców i nowoczesny design. Sprawdź wizualnie, czy ten mebel pasuje do stylu Twojego pokoju przed zakupem!</p>
             
             <!-- Кнопки каталога -->
             <h3>Wybierz produkt:</h3>
             <div class="catalog-buttons">
                 <!-- Если твой второй файл называется иначе, поменяй 'table.glb' на свое название -->
-                <button class="catalog-btn active" onclick="changeProduct('chair.glb', 'Fotel biurowy Ergo-Plus', 'Ergonomiczne wsparcie dla pleców i nowoczesny design. Przymierz w swoim pokoju przed zakupem!', this)">Fotel</button>
-                <button class="catalog-btn" onclick="changeProduct('table.glb', 'Stół drewniany Loft', 'Minimalistyczny stół idealny do nowoczesnych wnętrz. Sprawdź, czy zmieści się w Twojej kuchni!', this)">Stół</button>
+                <button class="catalog-btn active" onclick="changeProduct('chair.glb', 'Fotel biurowy Ergo-Plus', 'Ergonomiczne wsparcie dla pleców i nowoczesny design. Sprawdź wizualnie, czy ten mebel pasuje do stylu Twojego pokoju przed zakupem!', this)">Fotel</button>
+                <button class="catalog-btn" onclick="changeProduct('table.glb', 'Stół drewniany Loft', 'Minimalistyczny stół idealny do nowoczesnych wnętrz. Sprawdź, czy idealnie wpisze się w design Twojej kuchni!', this)">Stół</button>
             </div>
         </div>
 
